@@ -10,12 +10,12 @@ function! s:SearchAMotion(type, ...)
 endfunction
 
 function! s:ReplaceMotion(type, ...)
-  let l:str_to_lay = @"
+  let l:replacement = @"
   silent exec 'normal! `[v`]d'
-  let l:deleted = @"
-  let @" = l:str_to_lay
+  let l:replaced = @"
+  let @" = l:replacement
   silent exec 'normal! P'
-  let @" = l:deleted
+  let @" = l:replaced
 endfunction
 
 nnoremap g/ :set opfunc=<SID>SearchAMotion<CR>g@
