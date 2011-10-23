@@ -1,5 +1,5 @@
 if exists("g:loaded_ryve") || &cp
-    finish
+  finish
 endif
 let g:loaded_ryve = 1
 
