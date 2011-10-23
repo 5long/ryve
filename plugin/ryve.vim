@@ -21,5 +21,10 @@ endfunction
 nnoremap <silent> <Plug>SearchByMotion :set opfunc=<SID>SearchByMotion<CR>g@
 nnoremap <silent> <Plug>ReplaceByMotion :set opfunc=<SID>ReplaceByMotion<CR>g@
 
-nmap <unique> g/ <Plug>SearchByMotion
-nmap <unique> gr <Plug>ReplaceByMotion
+if !hasmapto('<Plug>SearchByMotion', 'n')
+  nmap <unique> g/ <Plug>SearchByMotion
+endif
+
+if !hasmapto('<Plug>ReplaceByMotion', 'n')
+  nmap <unique> gr <Plug>ReplaceByMotion
+endif
