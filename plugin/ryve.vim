@@ -4,7 +4,7 @@ endif
 let g:loaded_ryve = 1
 
 function! s:SearchByMotion(type, ...)
-  silent exec 'normal! `[v`]y'
+  silent normal! `[v`]y
   let @/ = @"
   call search(@")
 endfunction
