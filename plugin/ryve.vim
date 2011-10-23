@@ -3,13 +3,13 @@ if exists("g:loaded_ryve") || &cp
 endif
 let g:loaded_ryve = 1
 
-function! SearchAMotion(type, ...)
+function! s:SearchAMotion(type, ...)
   silent exec 'normal! `[v`]y'
   let @/ = @"
   call search(@")
 endfunction
 
-function! ReplaceMotion(type, ...)
+function! s:ReplaceMotion(type, ...)
   let l:str_to_lay = @"
   silent exec 'normal! `[v`]d'
   let l:deleted = @"
@@ -18,5 +18,5 @@ function! ReplaceMotion(type, ...)
   let @" = l:deleted
 endfunction
 
-nnoremap g/ :set opfunc=SearchAMotion<CR>g@
-nnoremap gr :set opfunc=ReplaceMotion<CR>g@
+nnoremap g/ :set opfunc=<SID>SearchAMotion<CR>g@
+nnoremap gr :set opfunc=<SID>ReplaceMotion<CR>g@
