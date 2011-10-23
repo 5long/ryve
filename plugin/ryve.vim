@@ -3,13 +3,13 @@ if exists("g:loaded_ryve") || &cp
 endif
 let g:loaded_ryve = 1
 
-function! s:SearchAMotion(type, ...)
+function! s:SearchByMotion(type, ...)
   silent exec 'normal! `[v`]y'
   let @/ = @"
   call search(@")
 endfunction
 
-function! s:ReplaceMotion(type, ...)
+function! s:ReplaceByMotion(type, ...)
   let l:replacement = @"
   silent exec 'normal! `[v`]d'
   let l:replaced = @"
@@ -18,8 +18,8 @@ function! s:ReplaceMotion(type, ...)
   let @" = l:replaced
 endfunction
 
-nnoremap <silent> <Plug>SearchAMotion :set opfunc=<SID>SearchAMotion<CR>g@
-nnoremap <silent> <Plug>ReplaceMotion :set opfunc=<SID>ReplaceMotion<CR>g@
+nnoremap <silent> <Plug>SearchByMotion :set opfunc=<SID>SearchByMotion<CR>g@
+nnoremap <silent> <Plug>ReplaceByMotion :set opfunc=<SID>ReplaceByMotion<CR>g@
 
-nmap g/ <Plug>SearchAMotion
-nmap gr <Plug>ReplaceMotion
+nmap g/ <Plug>SearchByMotion
+nmap gr <Plug>ReplaceByMotion
