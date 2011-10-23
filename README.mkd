@@ -1,0 +1,4 @@
+## Warning
+
+You don't wanna use a first-time Vim plugin author's work do you?
+Especially while it's under heavy development.
