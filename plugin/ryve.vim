@@ -18,5 +18,8 @@ function! s:ReplaceMotion(type, ...)
   let @" = l:replaced
 endfunction
 
-nnoremap <silent> g/ :set opfunc=<SID>SearchAMotion<CR>g@
-nnoremap <silent> gr :set opfunc=<SID>ReplaceMotion<CR>g@
+nnoremap <silent> <Plug>SearchAMotion :set opfunc=<SID>SearchAMotion<CR>g@
+nnoremap <silent> <Plug>ReplaceMotion :set opfunc=<SID>ReplaceMotion<CR>g@
+
+nmap g/ <Plug>SearchAMotion
+nmap gr <Plug>ReplaceMotion
