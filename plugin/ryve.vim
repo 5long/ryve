@@ -1,3 +1,8 @@
+if exists("g:loaded_ryve") || &cp
+    finish
+endif
+let g:loaded_ryve = 1
+
 function! SearchAMotion(type, ...)
   silent exec 'normal! `[v`]y'
   let @/ = @"
