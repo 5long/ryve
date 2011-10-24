@@ -4,20 +4,20 @@ endif
 let g:loaded_ryve = 1
 
 function! s:SearchByMotion(type, ...)
-  let l:saved_unnamed_reg = @"
+  let l:saved_unnamed_reg = @@
   silent normal! gvy
-  let @/ = @"
-  call search(@")
-  let @" = l:saved_unnamed_reg
+  let @/ = @@
+  call search(@@)
+  let @@ = l:saved_unnamed_reg
 endfunction
 
 function! s:ReplaceByMotion(type, ...)
-  let l:replacement = @"
+  let l:replacement = @@
   silent exec 'normal! `[v`]d'
-  let l:replaced = @"
-  let @" = l:replacement
+  let l:replaced = @@
+  let @@ = l:replacement
   silent exec 'normal! P'
-  let @" = l:replaced
+  let @@ = l:replaced
 endfunction
 
 nnoremap <silent> <Plug>SearchByMotion :<c-u>set opfunc=<SID>SearchByMotion<CR>g@
