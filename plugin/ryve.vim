@@ -13,10 +13,10 @@ endfunction
 
 function! s:ReplaceByMotion(type, ...)
   let l:replacement = @@
-  silent exec 'normal! `[v`]d'
+  silent normal! `[v`]d
   let l:replaced = @@
   let @@ = l:replacement
-  silent exec 'normal! P'
+  silent normal! P
   let @@ = l:replaced
 endfunction
 
