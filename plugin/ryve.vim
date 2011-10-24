@@ -5,7 +5,7 @@ let g:loaded_ryve = 1
 
 function! s:SearchByMotion(type, ...)
   let l:saved_unnamed_reg = @"
-  silent normal! `[v`]y
+  silent normal! gvy
   let @/ = @"
   call search(@")
   let @" = l:saved_unnamed_reg
