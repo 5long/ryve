@@ -15,10 +15,8 @@ function! s:ReplaceByMotion(type, ...)
   silent normal! `[v`]p
 endfunction
 
-nnoremap <silent> <Plug>SearchByMotion \
-  :<c-u>set opfunc=<SID>SearchByMotion<CR>g@
-nnoremap <silent> <Plug>ReplaceByMotion \
-  :<c-u>set opfunc=<SID>ReplaceByMotion<CR>g@
+nnoremap <silent> <Plug>SearchByMotion :<c-u>set opfunc=<SID>SearchByMotion<CR>g@
+nnoremap <silent> <Plug>ReplaceByMotion :<c-u>set opfunc=<SID>ReplaceByMotion<CR>g@
 
 if !hasmapto('<Plug>SearchByMotion', 'n')
   nmap <unique> g/ <Plug>SearchByMotion
