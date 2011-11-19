@@ -12,12 +12,7 @@ function! s:SearchByMotion(type, ...)
 endfunction
 
 function! s:ReplaceByMotion(type, ...)
-  let l:replacement = @@
-  silent normal! `[v`]d
-  let l:replaced = @@
-  let @@ = l:replacement
-  silent normal! P
-  let @@ = l:replaced
+  silent normal! `[v`]p
 endfunction
 
 nnoremap <silent> <Plug>SearchByMotion \
