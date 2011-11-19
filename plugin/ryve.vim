@@ -6,8 +6,8 @@ let g:loaded_ryve = 1
 function! s:SearchByMotion(type, ...)
   let l:saved_unnamed_reg = @@
   silent normal! `[v`]y
-  let @/ = @@
-  call search(@@)
+  let l:search_term = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+  let @/ = l:search_term
   let @@ = l:saved_unnamed_reg
 endfunction
 
