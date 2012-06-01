@@ -21,9 +21,43 @@ function! s:PasteByMotion(type, ...)
   let @@ = saved_unnamed_reg
 endfunction
 
+function! s:GoToName()
+  let pos = s:GoToPossibleAssignOp()
+  if pos == -1
+    return
+  endif
+  normal! B
+endfunction
+
+function! s:GoToValue()
+  let pos = s:GoToPossibleAssignOp()
+  if pos == -1
+    return
+  endif
+  normal! lW
+endfunction
+
+function! s:GoToPossibleAssignOp()
+  let [l, c, offset] = getpos(".")[1:3]
+  let cur_line = getline(".")
+  let pos = match(cur_line, '\V=', c)
+  if pos == -1
+    let pos = match(cur_line, '\V=', 0)
+  endif
+
+  if pos == -1
+    return -1
+  endif
+
+  call cursor(l, pos, offset)
+  return pos
+endfunction
+
 nnoremap <silent> <Plug>SearchByMotion :<c-u>set opfunc=<SID>SearchByMotion<CR>g@
 nnoremap <silent> <Plug>ReplaceByMotion :<c-u>set opfunc=<SID>ReplaceByMotion<CR>g@
 nnoremap <silent> <Plug>PasteByMotion :<c-u>set opfunc=<SID>PasteByMotion<CR>g@
+nnoremap <silent> <Plug>GoToName :<c-u>call <SID>GoToName()<CR>
+nnoremap <silent> <Plug>GoToValue :<c-u>call <SID>GoToValue()<CR>
 
 if !hasmapto('<Plug>SearchByMotion', 'n')
   nmap <unique> g/ <Plug>SearchByMotion
@@ -35,4 +69,12 @@ endif
 
 if !hasmapto('<Plug>PasteByMotion', 'n')
   nmap gp <Plug>PasteByMotion
+endif
+
+if !hasmapto('<Plug>GoToName', 'n')
+  nmap gh <Plug>GoToName
+endif
+
+if !hasmapto('<Plug>GoToValue', 'n')
+  nmap gl <Plug>GoToValue
 endif
